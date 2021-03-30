@@ -6,16 +6,16 @@ if (!address){
     console.log("please provide the address");
 }
 else {
-    geoCode(address, (error, data) => {
+    geoCode(address, (error, {latitude,longitude,location}={}) => {
         if (error) {
           return console.log(error);
         }
        
-        forcast(data.latitude, data.longitude, (error, forecastdata) => {
+        forcast(latitude, longitude, (error, forecastdata) => {
           if (error) {
             return console.log(error);
           }
-          console.log(data.location);
+          console.log(location);
           console.log(forecastdata);
         });
       });
